@@ -13,9 +13,9 @@ public:
                 int left = j+1, right = n-1;
                 
                 while(left<right){
-                    int diff = nums[i]+nums[j]-target;
+                    int diff = target-nums[i]-nums[j];
                     int subtotal = nums[left]+nums[right];
-                    if(diff == -subtotal){
+                    if(diff == subtotal){
                         ans.push_back({nums[i],nums[j],nums[left],nums[right]});
                         while(left<right && nums[left]==nums[left+1]){
                             left++;
@@ -25,7 +25,7 @@ public:
                             right--;
                         }
                         right--;
-                    } else if(diff < -subtotal){
+                    } else if(diff > subtotal){
                         left++;
                     } else{
                         right--;
