@@ -16,7 +16,7 @@ class Solution(object):
 
 
 
-        # ==================== My Answer =====================
+        # ==================== My Answer (Wrong) =====================
         # def helper(nums, target, left, right):
         #     if right > left:
         #         mid = left + (right - left) // 2
@@ -49,22 +49,20 @@ class Solution(object):
         
         def helper(nums, target):
             left = 0
-            right = len(nums) - 1
-            ans = len(nums)
-            while left <= right:
-                mid = (left + right)//2
+            right = len(nums)
+            while left < right:
+                mid = (left + right) // 2
                 if nums[mid] >= target:
-                    right = mid - 1
-                    ans = mid
+                    right = mid
                 else:
                     left = mid + 1
-            return ans
+            return left
         
-        left = helper(nums,target-1)
-        right = helper(nums,target) -1
-        if left<=right and nums[left] == target:
-            return [left,right]
-        return [-1,-1]
+        left = helper(nums,target)
+        right = helper(nums,target+1)
+        if left==len(nums) or nums[left] != target:
+            return [-1,-1]
+        return [left,right-1]
         
 # @lc code=end
 
