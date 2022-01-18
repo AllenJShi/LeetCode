@@ -11,14 +11,32 @@ class Solution(object):
         :type nums: List[int]
         :rtype: None Do not return anything, modify nums in-place instead.
         """
-        # 遍历，碰到0就删除，在最后再加上相同个数的0
-        count = 0
-        for i in range(len(nums)):
-            if nums[i] == 0:
-                # del nums[i]
-                nums.pop(i)
-                count += 1
-                i -= 1
-        return nums + [0]*count
+        ############## 我的答案 passed ###############
+        # # 遍历，碰到0就删除，在最后再加上相同个数的0
+        # count = 0
+        # i = 0
+        # while True:
+        #     if i >= len(nums):
+        #         break
+        #     if nums[i] == 0:
+        #         # del nums[i]
+        #         nums.pop(i)
+        #         count += 1
+        #         i -= 1
+        #     i += 1
+        # nums += [0] * count
+        
+        ############### 参考答案 ##############
+        ################ 双指针 ##############
+        n = len(nums)
+        left, right = 0, 0
+        while right < n:
+            # 若右指针不为0，则与后一个互换
+            if nums[right] != 0:
+                nums[left], nums[right] = nums[right], nums[left]
+                left += 1
+            # 若右指针为0，则往后寻找第一个0
+            right += 1
+        
 # @lc code=end
 
