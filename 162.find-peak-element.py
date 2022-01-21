@@ -13,15 +13,15 @@ class Solution(object):
         """
         
         ######## 我的答案 （一次通过！！！）#########
-        # left = 0
-        # right = len(nums) - 1
+        left = 0
+        right = len(nums) - 1
         
-        # while left < right:
-        #     if nums[left] < nums[right]:
-        #         left += 1
-        #     else:
-        #         right -= 1
-        # return right
+        while left < right:
+            if nums[left] < nums[right]:
+                left += 1
+            else:
+                right -= 1
+        return right
         
         # time O(logn) | space O(1)
         
