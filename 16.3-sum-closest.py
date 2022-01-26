@@ -13,8 +13,6 @@ class Solution(object):
         :rtype: int
         """
         nums.sort()
-        # minDiff = 10000
-        # res = 0
         best = 10000
         for i in range(len(nums)):
             if i>0 and nums[i]==nums[i-1]: continue
@@ -35,23 +33,6 @@ class Solution(object):
                         left0 += 1
                     left = left0
         return best
-                # diff = abs(temp-target)
-                # if diff < minDiff:
-                #     minDiff = diff
-                #     res = temp
-                #     # print("@@@")
-                #     if temp < target:
-                #         # print("@@")
-                #         left += 1
-                #     elif temp > target:
-                #         # print("@")
-                #         right -= 1
-                #     else:
-                #         return res
-                # else:
-                #     break
-        # return res
-                
             
             
 # @lc code=end
