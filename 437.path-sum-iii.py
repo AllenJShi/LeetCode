@@ -39,6 +39,7 @@ class Solution(object):
         #######思路：当前元素的路径之和
         # 记录从root到当前结点除当前节点外的前缀和
         prefixSum = collections.defaultdict(int)
+        # 若curr-rootval=0，这里必然有一个path包括root自己
         prefixSum[0] = 1
         
         def backtracking(root,curr):
@@ -49,8 +50,11 @@ class Solution(object):
             curr += root.val
             # 从之前的前缀和中寻找
             res += prefixSum[curr-targetSum]
+            # 前缀和为curr时，更新一条路径
             prefixSum[curr] += 1
+            # 搜索左子树
             res += backtracking(root.left,curr)
+            # 搜索右子树
             res += backtracking(root.right,curr)
             # 回溯
             prefixSum[curr] -= 1
