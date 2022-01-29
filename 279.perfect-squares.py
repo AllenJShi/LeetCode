@@ -35,45 +35,48 @@ class Solution(object):
         # eg. 6|---4--->2|---1--->1|---1--->0
         # 6 = 4+1+1
         
-        # class Node:
-        #     def __init__(this,first,second):
-        #         this.first = first
-        #         this.second = second
+        class Node:
+            def __init__(this,first,second):
+                this.first = first
+                this.second = second
         
-        # queue = collections.deque()
-        # visited = [False] * (n+1)
-        # queue.append(Node(n,0))
-        # visited[n] = True
+        queue = collections.deque()
+        visited = [False] * (n+1)
+        queue.append(Node(n,0))
+        visited[n] = True
         
-        # while queue:
-        #     # pop开头节点
-        #     node = queue.popleft()
-        #     # num是当前结点的值
-        #     num = node.first
-        #     # step是从n到num所需经历的edge
-        #     step = node.second
-        #     # 如果当前到0，说明已经找到所有的n到0的途径，ie 平方数
-        #     if num==0: return step
-        #     i = 1
-        #     while True:
-        #         a = num - i*i
-        #         # 若平方数本身大于当前结点的值num，跳出while，代表当前结点的邻居结点已找全
-        #         if a < 0:break
-        #         # 把邻居结点依次加入队列
-        #         if not visited[a]:
-        #             # 同一结点的相邻结点（广度搜索）拥有相同个数的平方数（edges）
-        #             queue.append(Node(a, step+1))
-        #             visited[a] = True
-        #         i += 1
-        # return 0
+        while queue:
+            # pop开头节点
+            node = queue.popleft()
+            # num是当前结点的值
+            num = node.first
+            # step是从n到num所需经历的edge
+            step = node.second
+            # 如果当前到0，说明已经找到所有的n到0的途径，ie 平方数
+            if num==0: return step
+            i = 1
+            while True:
+                a = num - i*i
+                # 若平方数本身大于当前结点的值num，跳出while，代表当前结点的邻居结点已找全
+                if a < 0:break
+                # 把邻居结点依次加入队列
+                if not visited[a]:
+                    # 同一结点的相邻结点（广度搜索）拥有相同个数的平方数（edges）
+                    queue.append(Node(a, step+1))
+                    visited[a] = True
+                i += 1
+        return 0
     
         ################ DP (时间允许) #############
         dp = [0] * (n+1)
         for i in range(1,n+1):
+            # 假设min都是有i个1构成
             minimum, k = i, 1
+            # k从1向后找平方数，不超过当前target本身，找到最大的那个平方数
             while i-k*k >= 0:
                 minimum = min(dp[i-k*k],minimum)
                 k+=1
+            # 加上最大的平方数后得到i，就是i-k*k之后在加一个k*k
             dp[i] = minimum + 1
         return dp[n]
 # @lc code=end
