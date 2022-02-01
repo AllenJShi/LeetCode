@@ -12,22 +12,22 @@ class Solution(object):
         :rtype: str
         """
         ################ 递归 ################
-        def backtracking(i):
-            res, multi = "", 0
-            while i < len(s):
-                if '0' <= s[i] <= '9':
-                    multi = multi * 10 + int(s[i])
-                elif s[i] == '[':
-                    i, tmp = backtracking(i+1)
-                    res += tmp * multi
-                    multi = 0
-                elif s[i] == ']':
-                    return i, res
-                else:
-                    res += s[i]
-                i += 1
-            return res
-        return backtracking(0)
+        # def backtracking(i):
+        #     res, multi = "", 0
+        #     while i < len(s):
+        #         if '0' <= s[i] <= '9':
+        #             multi = multi * 10 + int(s[i])
+        #         elif s[i] == '[':
+        #             i, tmp = backtracking(i+1)
+        #             res += tmp * multi
+        #             multi = 0
+        #         elif s[i] == ']':
+        #             return i, res
+        #         else:
+        #             res += s[i]
+        #         i += 1
+        #     return res
+        # return backtracking(0)
         
         ############## 迭代 ###############
         stack, res, multi = [], "", 0
