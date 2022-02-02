@@ -57,7 +57,8 @@ class Solution(object):
         return ans
         # time O(n) | space O(1)
         
-"""def findAnagrams(self, s: str, p: str) -> List[int]:
+    """
+    def findAnagrams(self, s: str, p: str) -> List[int]:
         
         solution = []
         
