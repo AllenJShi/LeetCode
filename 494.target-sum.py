@@ -49,8 +49,22 @@ class Solution(object):
         return dfs(0,0)
     
     
-        ############ DP ###############
-        
+        ############ DP ##############
+        n = len(nums)
+        s = 0
+        for num in nums:
+            s += abs(num)
+        if abs(target) > s: return 0
+        dp = [[0] * (2*s+1) for _ in range(n+1)]
+        dp[0][0 + s] = 1
+        for i in range(1,n+1):
+            x = nums[i-1]
+            for j in range(-s,s+1,1):
+                if j-x+s >= 0:
+                    dp[i][j+s] += dp[i-1][j-x+s]
+                if j+x+s <= 2*s:
+                    dp[i][j+s] += dp[i-1][j+x+s]
+        return dp[n][target+s]
         
 # @lc code=end
 

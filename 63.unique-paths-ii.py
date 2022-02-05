@@ -7,6 +7,28 @@
 # @lc code=start
 class Solution(object):
     def uniquePathsWithObstacles(self, obstacleGrid):
+        ####################### 我的答案 ####################
+        ROWS, COLS = len(obstacleGrid), len(obstacleGrid[0])
+        dp = [[0] * (COLS) for _ in range(ROWS)]
+        for i in range(COLS):
+            if obstacleGrid[0][i] == 1:
+                break
+            dp[0][i] = 1
+        
+        for i in range(ROWS):
+            if obstacleGrid[i][0] == 1:
+                break
+            dp[i][0] = 1
+            
+        for i in range(1,ROWS):
+            for j in range(1,COLS):
+                if obstacleGrid[i][j] == 1:
+                    continue
+                dp[i][j] = dp[i-1][j] + dp[i][j-1]
+        return dp[-1][-1]
+        
+        
+        ########################################
         print_(obstacleGrid)
         
         
@@ -37,6 +59,9 @@ class Solution(object):
 def print_(mat):
     for i in mat:
         print(i)
+        
+        
+        
         
         
 # @lc code=end
