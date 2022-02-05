@@ -45,5 +45,17 @@ class Solution(object):
                 return True
             return backtracking(curr, idx+1) # not selecting idx, continue
         return False if s&1 else backtracking(0,0) # s&1若是偶数和则不可能
+    
+    
+        ################## 01背包
+        weight = nums
+        values = nums
+        size = sum(nums) // 2
+        if sum(nums) % 2 == 1: return False
+        dp = [0] * 10001
+        for i in range(len(nums)):
+            for j in range(size, nums[i]-1,-1):
+                dp[j] = max(dp[j],dp[j-weight[i]]+values[i])
+        return size == dp[size]
 # @lc code=end
 
