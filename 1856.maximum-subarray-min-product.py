@@ -11,6 +11,9 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
+        modulo = 10e9 + 7
+        stack = []
+        
         
         
 # @lc code=end
