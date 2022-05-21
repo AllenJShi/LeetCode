@@ -96,6 +96,8 @@ class Solution(object):
         if not right: return left
         # 4.左右都不为空，root即为公共祖先
         return root
+    
+        # time O(n) | space O(n)
         
 # @lc code=end
 

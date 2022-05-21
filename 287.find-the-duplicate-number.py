@@ -44,6 +44,7 @@ class Solution(object):
             else:
                 right = mid - 1
                 ans = mid
+                
         return ans
 # @lc code=end
 

@@ -36,6 +36,8 @@ class Solution(object):
                         min(dp[row-1][col],dp[row][col-1])+grid[row][col]
         print(dp)
         return dp[ROWS-1][COLS-1]
+    
+    
         
 # @lc code=end
 

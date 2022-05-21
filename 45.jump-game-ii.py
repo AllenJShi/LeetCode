@@ -49,7 +49,7 @@ class Solution(object):
                     end = maxPos
                     step += 1
         return step
-    
+        # time O(n) | space O(1)
     
 # @lc code=end
 

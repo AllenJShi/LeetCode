@@ -20,6 +20,7 @@ class Solution(object):
         # # 前面的n-k个移动到末尾
         # nums[:] = nums[-k:] + nums[0:n-k]
         
+        # time O(n) | space O(n)
         
         ############ 参考答案 ##############
         ### 方法：三次反转
@@ -27,7 +28,7 @@ class Solution(object):
         # 将【0，k%n-1】，【k%n，n-】各自反转
         def reverse(start, end):
             while start < end:
-                nums[start],nums[end] = nums[end], nums[start]
+                nums[start],nums[end] = nums[end],nums[start]
                 start += 1
                 end -= 1
         n = len(nums)
@@ -35,6 +36,14 @@ class Solution(object):
         reverse(0,n-1)
         reverse(0,k-1)
         reverse(k,n-1)
+        
+        # time O(n) | space O(1)
+        
+        
+        
+        ### 方法：环状替换
+        
+        
     
 # @lc code=end
 

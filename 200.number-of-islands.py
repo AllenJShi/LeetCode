@@ -16,6 +16,7 @@ class Solution(object):
         if ROWS == 0: return 0
         # NOTE: expected answer
         num_island = 0
+        
         ##################### DFS #######################
 
         
@@ -33,7 +34,6 @@ class Solution(object):
         # return num_island
         
         # # time O(mn) | space O(mn)
-        
         
         
         ###################### BFS ###########################

@@ -27,19 +27,17 @@ class Solution(object):
         # return dp[m-1][n-1]
     
         ######### dfs （超时）
-        def dfs(i,j):
-            if i > m  or j > n: return 0
-            if i==m and j==n: return 1
-            return dfs(i+1,j) + dfs(i,j+1)
-        return dfs(1,1)
+        # def dfs(i,j):
+        #     if i > m  or j > n: return 0
+        #     if i==m and j==n: return 1
+        #     return dfs(i+1,j) + dfs(i,j+1)
+        # return dfs(1,1)
     
         
-        f = [[1] * n] + [[1] + [0] * (n-1) for _ in range(m-1)]
-        # print(f)                
+        f = [[1] * n] + [[1] + [0] * (n-1) for _ in range(m-1)]                
         for i in range(1,m):
             for j in range(1,n):
                 f[i][j] = f[i-1][j] + f[i][j-1]
-        print_(f)
         return f[m-1][n-1]
     
 def print_(mat):
